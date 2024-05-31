@@ -1,0 +1,194 @@
+{% extends 'iut/base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="banner d-flex justify-content-center align-items-center pt-5">
+  <div class="container my-5 py-5">
+    <div class="row">
+      <div class="col-md-6"></div>
+      <div class="col-md-6">
+        <h1 class="text-capitalize py-3 redressed banner-desc">
+          Ecole leader de gestion.<br>
+          Nous formons les cadres de demain
+        </h1>
+        <p>
+          <a href="#contact">
+            <button class="btn btn-order btn-lg me-5 rounded-0 merriweather">Contactez nous</button>
+          </a>
+        </p>
+      </div>
+    </div>
+    <br> <br> <br>
+  </div>
+</section>
+
+<center> <h2 class="text-capitalize py-3 redressed banner-desc">
+         Les posts récents 
+</h2> </center>
+
+<section class="available merriweather py-5">
+  <div class="container">
+    <div class="row">
+      {% for post in recent_posts %}
+        <div class="card mb-3 border-0 rounded-0 mx-auto" style="width: 80%;">
+          <div class="row g-0">
+            <div class="col-md-6">
+              <img src="{{ post.image.url }}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-6">
+              <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text">{{ post.intro|truncatewords:30 }}</p>
+                <p class="card-text"><small class="text-muted">Dernière mise à jour : {{ post.date_created|date:"SHORT_DATETIME_FORMAT" }}</small></p>
+                <a href="{% url 'detailView' post.slug %}" class="btn btn-primary">Lire la suite</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <div class="col-12">
+          <p>Aucun article de blog pour le moment.</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<section class="cc-menu py-5 merriweather ">
+  <div class="container">
+    <div class="row">
+        <section class="section section-lg   text-center">
+        <div class="container">
+          <h1 class="text-light" >Découvrez notre institut à taille humaine, proposant des formations personnalisées et des cours passionnants pour un parcours académique épanouissant.</h1>
+          <br> <br><br>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img src="{% static 'img/gc.png' %}" alt="Accounting">
+                <h2>Gestion commercial</h2>
+            </div>
+            <div class="grid-item">
+                <img src="{% static 'img/gtl.png' %}" alt="Business Management">
+                <h2>Gestion des Transport et Logistique</h2>
+            </div>
+            <div class="grid-item">
+                <img src="{% static 'img/grh.png' %}" alt="Computer Technology">
+                <h2>Gestion des Ressources Humaines</h2>
+            </div>
+            <br>
+            <div class="grid-item">
+                <img src="{% static 'img/ge.png' %}" alt="Electronics Technology">
+                <h2>Gestion des Entreprises</h2>
+            </div>
+            <div class="grid-item">
+                <img src="{% static 'img/gb.png' %}" alt="Medical Science">
+                <h2>Gestion des Banques</h2>
+            </div>
+            <div class="grid-item">
+                <img src="{% static 'img/ig.png' %}" alt="Office Technology">
+                <h2>Informatique de Gestion</h2>
+            </div>
+
+             <p>
+             <a href="{% url 'about' %}"  >  <button class="btn btn-order btn-lg me-5 rounded-0 merriweather"  >Voir plus </button> </a>
+            </p>
+           
+        </div>
+        </div>
+      </section>
+  </div>
+</section>
+
+<section class="cc-carousel merriweather bg-dark text-light text-center py-5">
+  <div class="container">
+    <div class="row">
+      <h1 class="text-uppercase text-light ">Une pédagogie révolutionnaire</h1>
+      <div class="col pb-4">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt nesciunt, perspiciatis est dignissimos atque harum eligendi impedit dolorem nobis eos quae culpa asperiores, rem quaerat aliquam. Vitae consectetur unde tempore?
+      </div>
+    </div>
+    <div id="carouselExampleFade" class="carousel slide carousel-fade">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="static/img/05.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5> Apprenez en pratiquant </h5>
+            <p>Some representative placeholder content for the third slide.</p>
+          </div>
+        </div>
+        
+        <div class="carousel-item">
+          <img src="static/img/07.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5> Une communauté a votre disponibilité </h5>
+            <p>Some representative placeholder content for the third slide.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="order-form py-5" id="contact">
+
+  <div class="container">
+    <h2 class="merriweather text-center text-light mb-4">
+      Nous contacter
+    </h2>
+    <form method ='post' action= "{% url 'contacter' %}" >
+
+    {% csrf_token %}
+
+      <div class="row">
+
+            <div class="input-group mb-3">
+              <input type="text" name="objet" class="form-control" placeholder="Objet" ">
+            </div>
+
+        <div class="col-md-6 col-sm">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+            <input type="text" name="nom" class="form-control" placeholder="Votre Nom" ">
+          </div>
+
+           <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+            <input type="text" name="prenom" class="form-control" placeholder="Votre Prenom" ">
+          </div>
+
+          
+          
+         
+        </div>
+        <div class="col-md-6 col-sm">
+          <div class="input-group mb-3">
+            <input type="email" name="email" class="form-control" placeholder="Votre adresse email">
+            <span class="input-group-text" id="basic-addon1"><i class="fas fa-at"></i></span>
+          </div>
+          <div class="input-group mb-3">
+            <input type="number" name="tel" class="form-control" placeholder="Numero de telephone">
+            <span class="input-group-text" id="basic-addon1"><i class="fas fa-phone"></i></span>
+          </div>
+ 
+          
+        </div>
+        <div class="input-group mb-3">
+  <textarea class="form-control" placeholder="Votre message" name="message" rows="3"></textarea>
+  <span class="input-group-text" id="basic-addon1"><i class="fas fa-pencil-alt"></i></span>
+</div>
+         <div class="nav-item pe-4 text-center">
+              <button type="submit"  class="btn btn-order rounded-0" >Envoyer</button>
+          </div>
+      </div>
+    </form>
+  </div>
+</section>
+   
+    
+{% endblock %}

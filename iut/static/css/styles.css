@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Redressed&family=Merriweather:wght@300;400;700&display=swap');
+
+.redressed{
+	font-family: 'Redressed',cursive;
+}
+
+.card-img-top {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+.card {
+    margin-bottom: 20px;
+}
+
+.title {
+    cursor: pointer;
+  }
+  
+  .icon {
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+  
+  .content {
+    display: none;
+    margin-left: 20px;
+  }
+  
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+.carousel-item-sm img {
+  max-height: 200px; /* ou une autre hauteur de votre choix */
+  object-fit: cover;
+}
+
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+header .logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+header nav {
+    text-align: right;
+    padding-right: 20px;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+main {
+    text-align: center;
+    padding: 20px;
+}
+
+main h1 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* space between items */
+}
+
+.grid-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    width: calc(33.333% - 40px); /* 3 items per row with space between */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.grid-item img {
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.grid-item h2 {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .grid-item {
+        width: calc(50% - 30px); /* 2 items per row on medium screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-item {
+        width: calc(100% - 20px); /* 1 item per row on small screens */
+    }
+}
+
+.merriweather{
+	font-family: 'Merriweather',selif;
+}
+
+.cc-navbar {
+	background-color: rgba(0, 0, 0, 0.55);
+	font-family: 'Merriweather', serif;
+	box-shadow: 1px 1px 3px rgba(255, 255, 255, 0.54);
+	z-index: 99;
+	
+}
+.cc-navbar .nav-link{
+	border-bottom: 1px solid transparent;
+	transition: padding-bottom .4s ease-in-out, border-color .3s ease;
+}
+.cc-navbar .nav-link:hover{
+	padding-bottom: 20px;
+	border-bottom-color:var(--bs-teal) ;
+}
+
+.banner,
+.order-form{
+	background:linear-gradient( rgba(0, 0, 0, .5),rgba(0, 0, 0, .5)),url('../img/09.jpg?v=2') center center fixed no-repeat;
+	background-size: cover;
+	height: 800px;
+}
+
+
+.banner .banner-desc{
+	font-size: 48px;
+	font-weight: 400;
+	color: #fff;
+}
+
+.cc-menu{
+	background:linear-gradient( rgba(0, 0, 0, .5),rgba(0, 0, 0, .5)),url('../img/01.jpg') center center fixed no-repeat;
+	background-size: cover;
+	height: 1500px;
+}
+
+
+.btn-order{
+	color: var(--bs-teal);
+	border-color: var(--bs-teal);
+	transition: 0.5s;
+}
+
+.btn-order:hover,
+.btn-order:active{
+	color:#fff;
+	background-color:var(--bs-teal) ;
+}

@@ -1,0 +1,39 @@
+{% extends 'iut/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+    <br><br><br><br>
+
+    <div class="container">
+        <h2 class="text-center">Liste des Mémoires</h2>
+        <br>
+
+        <form method="GET" action="" class="d-flex justify-content-center">
+            <input type="text" name="q" placeholder="Rechercher un mémoire..." value="{{ request.GET.q }}" class="form-control">
+            <button type="submit" class="btn btn-primary ms-2">Rechercher</button>
+        </form>
+
+        <br>
+
+        {% if memoires %}
+            {% for memoire in memoires %}
+                <div class="row border-bottom py-3">
+                    <div class="col">
+                        Nom : {{ memoire.student_name }} <br>
+                        Filière : {{ memoire.filiere }} <br>
+                        Thème : {{ memoire.theme }} <br>
+                    </div>
+                    <div class="col-auto text-end">
+                        <a href="{{ memoire.file.url }}" download class="btn btn-outline-primary">Télécharger</a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="text-center">Aucun mémoire trouvé</div>
+        {% endif %}
+    </div>
+
+{% endblock %}
